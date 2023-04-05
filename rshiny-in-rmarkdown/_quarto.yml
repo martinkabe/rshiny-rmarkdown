@@ -1,0 +1,6 @@
+project:
+  title: "rshiny-in-rmarkdown"
+  output: html_document
+  runtime: shiny
+
+editor: visual

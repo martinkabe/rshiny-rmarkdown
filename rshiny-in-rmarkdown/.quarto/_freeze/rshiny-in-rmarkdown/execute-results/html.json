@@ -1,0 +1,16 @@
+{
+  "hash": "797c3f1ae55ae8fa7328f5d8c147de1e",
+  "result": {
+    "markdown": "---\ntitle: \"rshiny-in-rmarkdown\"\noutput: html_document\nruntime: shiny\n---\n\n\n## Quarto\n\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stderr}\n```\nWarning: package 'shiny' was built under R version 4.2.2\n```\n:::\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<div class=\"form-group shiny-input-container\">\n<label class=\"control-label\" id=\"inptRows-label\" for=\"inptRows\">How many cars?</label>\n<input id=\"inptRows\" type=\"number\" class=\"form-control\" value=\"5\"/>\n</div>\n```\n:::\n\n::: {.cell-output-display}\n```{=html}\n<div class=\"form-group shiny-input-container\">\n<label class=\"control-label\" id=\"inptBins-label\" for=\"inptBins\">How many bins for histogram?</label>\n<input id=\"inptBins\" type=\"number\" class=\"form-control\" value=\"10\"/>\n</div>\n```\n:::\n\n::: {.cell-output-display}\n```{=html}\n<div class=\"form-group shiny-input-container\">\n<label class=\"control-label\" id=\"txtTitle-label\" for=\"txtTitle\">Title for histogram</label>\n<input id=\"txtTitle\" type=\"text\" class=\"form-control\" value=\"\"/>\n</div>\n```\n:::\n\n::: {.cell-output-display}\n```{=html}\n<div id=\"out513a6639d39f31a8\" class=\"shiny-html-output\"></div>\n```\n:::\n:::\n\n\n\nApp below takes reactive value from previous code chunk and uses it for drawing a chart.\n\n\n::: {.cell}\n::: {.cell-output-display}\n`<iframe data-deferred-src=\"app4d8e7f4f155d203aa23f3347161d5248/?w=&amp;__subapp__=1\" width=\"100%\" height=\"500\" class=\"shiny-frame shiny-frame-deferred\"></iframe>`{=html}\n:::\n:::\n\n\n\nAnd some embeded RShiny app via **shinyAppDir**.\n\n\n::: {.cell}\n::: {.cell-output-display}\n`<iframe data-deferred-src=\"appc8131aae3a2f8acd0638ae8691931785/?w=&amp;__subapp__=1\" width=\"100%\" height=\"700\" class=\"shiny-frame shiny-frame-deferred\"></iframe>`{=html}\n:::\n:::\n",
+    "supporting": [
+      "rshiny-in-rmarkdown_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,68 @@
+---
+title: "rshiny-in-rmarkdown"
+output: html_document
+runtime: shiny
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+```{r callPackages, echo=FALSE}
+library(shiny)
+```
+
+```{r callFunctions, echo=FALSE}
+source("./rshiny-app/app2.R")
+```
+
+
+
+```{r, echo=FALSE}
+rv<-reactiveValues()
+
+numericInput(
+  inputId = "inptRows",
+  label = "How many cars?",
+  value = 5
+)
+
+numericInput(
+  inputId = "inptBins",
+  label = "How many bins for histogram?",
+  value = 10
+)
+
+textInput(
+  inputId = "txtTitle",
+  label = "Title for histogram"
+)
+
+observe({
+  rv$nRows<-input$inptRows
+  rv$nBins<-input$inptBins
+  rv$title<-input$txtTitle
+})
+
+renderTable({
+  req(rv$nRows)
+  head(cars, rv$nRows)
+})
+```
+
+
+App below takes reactive value from previous code chunk and uses it for drawing a chart.
+
+```{r, echo=FALSE}
+test_app(rv)
+```
+
+
+And some embeded RShiny app via **shinyAppDir**.
+
+```{r, echo=FALSE}
+shinyAppDir(
+  "rshiny-app/",
+  options = list(width = "100%", height = 700)
+)
+```

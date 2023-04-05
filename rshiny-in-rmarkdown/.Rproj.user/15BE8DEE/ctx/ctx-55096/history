@@ -1,0 +1,7 @@
+---
+title: "rshiny-in-rmarkdown"
+library(shiny)
+faithful
+?hist
+gc()
+install.packages("xfun")
