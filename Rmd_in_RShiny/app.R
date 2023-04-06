@@ -21,28 +21,47 @@ tbls("Tab1", "Some table with the data")
 
 ui <- fluidPage(
   useShinyjs(),
-
-  tags$script(src = "//yihui.org/js/math-code.js"),
-  tags$script(src = "//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"),
   
-  actionButton("btnShowHide", "show / hide"),
-  shinyjs::hidden(
-    div(
-      id="form",
-      textAreaInput(inputId = "txtInpt", label = NULL)
-    )
+  tags$head(
+    tags$link(rel="stylesheet", type="text/css", href="main.css"),
+    tags$script(src = "//yihui.org/js/math-code.js"),
+    tags$script(src = "//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"),
   ),
   
-  uiOutput('markdown'),
-  uiOutput("citeTbl"),
-  tableOutput(outputId = "tblMtcars")
+  div(
+    id="main-div",
+    actionButton("btnShowHide", "Edit"),
+    shinyjs::hidden(
+      div(
+        id="form",
+        textAreaInput(inputId = "txtInpt", label = NULL)
+      )
+    ),
+    
+    uiOutput('markdown'),
+    uiOutput("citeTbl"),
+    tableOutput(outputId = "tblMtcars")
+  )
 )
 
 # Define server logic required to draw a histogram
 server <- function(input, output, session) {
 
   rv<-reactiveValues()
-  rv$eq1<-paste0(tbls("Tab1", display="cite"), " shows mrcars dataset.")
+  rv$eq1<-glue::glue(
+    '# 1. Introduction
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus luctus egestas leo.
+    Phasellus rhoncus. Aliquam erat volutpat. Mauris elementum mauris vitae tortor.
+    Nunc auctor. Ut tempus purus at lorem. Quis autem vel eum iure reprehenderit qui in 
+    ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat 
+    quo voluptas nulla pariatur? Fusce nibh. In rutrum.
+    {tbls("Tab1", display="cite")} shows mrcars dataset.
+    $$Pr(\\theta | y) = \\frac{{Pr(y | \\theta) Pr(\\theta)}}{{Pr(y)}}$$
+    $$Pr(\\theta | y) \\propto Pr(y | \\theta) Pr(\\theta)$$
+    ## 1.1 Linear Model
+    $$Y \\sim X\\beta_0 + X\\beta_1 + \\epsilon$$
+    $$\\epsilon \\sim N(0,\\sigma^2)$$'
+  )
   shinyjs::hide(id = "myBox")
   
   observe({
@@ -68,7 +87,8 @@ server <- function(input, output, session) {
   })
   
   output$citeTbl<-renderUI({
-    HTML(markdown::markdownToHTML(tbls("Tab1", display="full"), fragment.only = TRUE))
+    # browser()
+    HTML(markdown::markdownToHTML(text = tbls("Tab1", display="full"), fragment.only = TRUE))
   })
   
   observeEvent(input$btnShowHide, {
