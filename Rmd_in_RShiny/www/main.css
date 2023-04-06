@@ -5,3 +5,22 @@
   padding: 10px;
   margin-top: 25px;
 }
+
+#btnShowHide {
+  position: relative;
+  float: right;
+}
+
+#btnShowHide:hover:after {
+  content: "Please, edit";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8); /* change the alpha value to make the color less aggressive */
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 14px;
+  white-space: nowrap;
+}

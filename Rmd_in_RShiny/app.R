@@ -34,10 +34,14 @@ ui <- fluidPage(
     shinyjs::hidden(
       div(
         id="form",
-        textAreaInput(inputId = "txtInpt", label = NULL)
+        textAreaInput(
+          inputId = "txtInpt",
+          label = NULL,
+          width = "500px",
+          height = "200px"
+        )
       )
     ),
-    
     uiOutput('markdown'),
     uiOutput("citeTbl"),
     tableOutput(outputId = "tblMtcars")
@@ -55,7 +59,7 @@ server <- function(input, output, session) {
     Nunc auctor. Ut tempus purus at lorem. Quis autem vel eum iure reprehenderit qui in 
     ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat 
     quo voluptas nulla pariatur? Fusce nibh. In rutrum.
-    {tbls("Tab1", display="cite")} shows mrcars dataset.
+    {tbls("Tab1", display="cite")} shows mtcars dataset.
     $$Pr(\\theta | y) = \\frac{{Pr(y | \\theta) Pr(\\theta)}}{{Pr(y)}}$$
     $$Pr(\\theta | y) \\propto Pr(y | \\theta) Pr(\\theta)$$
     ## 1.1 Linear Model
