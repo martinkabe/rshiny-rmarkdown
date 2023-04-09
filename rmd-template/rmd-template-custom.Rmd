@@ -18,7 +18,6 @@ knitr::opts_chunk$set(
   message = FALSE,
   fig.cap = TRUE
 )
-
 # set flextable defaults
 set_flextable_defaults(
   font.family = "Arial", font.size = 9, 
@@ -26,6 +25,22 @@ set_flextable_defaults(
   big.mark="", table.layout="autofit"
 )
 ```
+
+```{r functions}
+add_table<-function(bkm, label, style){
+  run_num <- run_autonum(
+    seq_id = "tab",
+    pre_label = "Table ", post_label = ". ",
+    bkm = bkm, bkm_all = TRUE
+  )
+  block_caption(
+    label = label,
+    style = style,
+    autonum = run_num
+  )
+}
+```
+
 
 ## R Markdown
 
@@ -36,17 +51,28 @@ When you click the **Knit** button a document will be generated that includes bo
 ```{r airquality}
 # ft_example <- fp_text_lite(
 #   color = "red", bold = TRUE)
-run_num <- run_autonum(seq_id = "tab", pre_label = "Table ", bkm = "iris_table", bkm_all = TRUE)
-block_caption(
+add_table(
+  bkm = "airquality_table",
   label = "Airquality table",
-  style = "caption",
-  autonum = run_num
+  style = "caption"
 )
 head(airquality)
-# body_add_table(docx, title, pos = "before")
 ```
 
-This is reference to `r run_reference(id = "iris_table")`.
+This is reference to `r run_reference(id = "airquality_table")`.
+
+And another table.
+
+```{r mtcars}
+add_table(
+  bkm = "mtcars_table",
+  label = "mtcars table",
+  style = "caption"
+)
+head(mtcars)
+```
+
+This is reference to `r run_reference(id = "mtcars_table")`.
 
 ## Including Plots
 
