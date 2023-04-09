@@ -1,0 +1,20 @@
+---
+title: "Dynamic report"
+output: html_document
+---
+
+
+```{r}
+print("Hi")
+```
+
+```{r}
+# The `reactiveValues` object is available in the document.
+50
+```
+
+A plot of `50` random points.
+
+```{r}
+plot(rnorm(50), rnorm(50))
+```
