@@ -66,7 +66,6 @@ server <- function(input, output, session) {
     $$Y \\sim X\\beta_0 + X\\beta_1 + \\epsilon$$
     $$\\epsilon \\sim N(0,\\sigma^2)$$'
   )
-  shinyjs::hide(id = "myBox")
   
   observe({
     #req(rv$eq2)
